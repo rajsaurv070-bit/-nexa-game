@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexa Game</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090711;color:white;font-family:Arial,sans-serif}
+header{padding:20px;background:#120c20;border-bottom:1px solid #7029bd;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:bold;color:#c58aff}
+button{background:#8b35df;color:white;border:0;padding:12px 18px;border-radius:10px;font-weight:bold;cursor:pointer}
+main{padding:20px;max-width:850px;margin:auto}
+.hero{background:linear-gradient(135deg,#26103d,#100d20);padding:28px 20px;border-radius:18px;border:1px solid #542480;margin:20px 0}
+h1{font-size:32px;margin:0 0 12px}
+p{color:#c9bfd8;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.game{background:#171122;border:1px solid #38234c;border-radius:15px;padding:18px;text-align:center}
+.emoji{font-size:38px;margin:10px}
+.panel{background:#171122;padding:18px;border-radius:14px;margin:18px 0}
+input{width:100%;padding:13px;margin:7px 0 14px;border-radius:9px;border:1px solid #514260;background:#0c0912;color:white}
+.hidden{display:none}
+.small{font-size:12px;color:#aaa}
+@media(max-width:420px){main{padding:13px}.hero{padding:20px}.grid{gap:9px}.game{padding:12px}h1{font-size:27px}}
+</style>
+</head>
+<body>
+<header><div class="logo">✦ NEXA GAME</div><button onclick="showAuth()">Sign In</button></header>
+<main>
+<section class="hero">
+<h1>Enter the Game Universe</h1>
+<p>Play. Explore. Enjoy. Welcome to your next gaming destination.</p>
+<button onclick="showAuth()">Create Account</button>
+</section>
+<section id="auth" class="panel hidden">
+<h2 id="authTitle">Create Account</h2>
+<form id="accountForm">
+<label>Username</label><input id="username" placeholder="Choose username" required>
+<label>Email</label><input id="email" type="email" placeholder="Enter email" required>
+<label>Password</label><input id="password" type="password" minlength="6" placeholder="Create password" required>
+<button type="submit">Create Account</button>
+</form>
+<p class="small">This starter page does not yet provide secure account storage or real authentication.</p>
+</section>
+<section id="lobby">
+<h2>🎮 Game Lobby</h2>
+<div class="grid">
+<div class="game"><div class="emoji">🎲</div><h3>Dice</h3><p>Try your luck with the dice.</p><button onclick="play('Dice')">Play</button></div>
+<div class="game"><div class="emoji">🎡</div><h3>Spin Wheel</h3><p>Spin and see your result.</p><button onclick="play('Spin Wheel')">Play</button></div>
+<div class="game"><div class="emoji">🚀</div><h3>Rocket Arcade</h3><p>Explore a rocket-themed game.</p><button onclick="play('Rocket Arcade')">Play</button></div>
+<div class="game"><div class="emoji">🃏</div><h3>Card Puzzle</h3><p>Test your memory and skill.</p><button onclick="play('Card Puzzle')">Play</button></div>
+</div>
+</section>
+<section id="result" class="panel hidden"></section>
+<section class="panel"><h3>🪙 Virtual Coins</h3><p>This starter website uses no real-money deposits. Virtual coins have no cash value.</p><p id="balance">Balance: 100 virtual coins</p></section>
+<footer class="small">Nexa Game · Play responsibly · Virtual points only</footer>
+</main>
+<script>
+function showAuth(){document.getElementById('auth').classList.toggle('hidden')}
+function play(name){
+const r=document.getElementById('result');
+r.classList.remove('hidden');
+r.innerHTML='<h2>'+name+'</h2><p>This game section is ready for further development.</p><button onclick="document.getElementById(\\'result\\').classList.add(\\'hidden\\')">Back to Lobby</button>';
+}
+document.getElementById('accountForm').addEventListener('submit',function(e){
+e.preventDefault();
+alert('This is a visual starter only. Secure account registration must be connected to a backend before use.');
+});
+</script>
+</body>
+</html>
